@@ -190,7 +190,15 @@ def main():
     input_folder = os.path.abspath('input')
     output_folder = os.path.abspath('output')
     autorun = '-y' in sys.argv
-    verbose = '-v' in sys.argv
+    verbose = '-v' in sys.argv or '--verbose'
+    if '-m' in sys.argv or '--minify' in sys.argv:
+        globals()['MINIFY_OUTPUT'] = True
+    if '-yg' in sys.argv:
+        if '-ng' in sys.argv:
+            print('Warning: Specified both \'-yg\' and \'-ng\': ignoring \'-ng\', emerald mesh sieve recipes will use golden mesh')
+        globals()['CONVERT_EMERALD_TO_GOLD'] = True
+    elif '-ng' in sys.argv:
+        globals()['CONVERT_EMERALD_TO_GOLD'] = False
 
     if not os.path.isdir(input_folder):
         print('Failed to start converter: converter.py must be placed next to (not inside) of a folder called input, '
@@ -259,7 +267,11 @@ def export_recipe(converted_recipe: dict, output_folder: str, result_folder: str
     if not os.path.isdir(result_folder):
         os.mkdir(result_folder)
         print(f"Created directory {result_folder} at {os.path.abspath(result_folder)}")
-    json.dump(converted_recipe, open(os.path.join(output_folder, result_folder, result_name), mode='w'), indent=2)
+    if 'MINIFY_OUTPUT' in globals():
+        indent = None
+    else:
+        indent = 2
+    json.dump(converted_recipe, open(os.path.join(output_folder, result_folder, result_name), mode='w'), indent=indent)
 
 
 def export_multiple_recipes(recipe_json: dict, conversion_function, output_folder: str, result_folder: str, file_name: str):

@@ -8,8 +8,12 @@ those recipes to use Ex Deorum's Golden mesh instead.
 
 The following recipe types are supported:
 - Barrel composting recipes (`exnihilosequentia:compost` -> `exdeorum:barrel_compost`)
-- Hammer recipes (`exnihilosequentia:hammer`, `exnihilosequentia:crushing` -> `exdeorum:barrel_compost`)
+- Barrel item mixing recipes (`exnihilosequentia:fluid_item`, `exnihilosequentia:precipitate` -> `exdeorum:barrel_mixing`)
+- Barrel fluid mixing recipes (`exnihilosequentia:fluid_on_top`, `exnihilosequentia:solidifying` -> `exdeorum:barrel_fluid_mixing`)
 - Crucible heat source recipes (`exnihilosequentia:heat` -> `exdeorum:crucible_heat_source`)
+- Lava and Water crucible recipes (`exnihilosequentia:crucible`, `exnihilosequentia:melting` -> `exdeorum:lava_crucible`, `exdeorum:water_crucible`)
+- Hammer recipes (`exnihilosequentia:hammer`, `exnihilosequentia:crushing` -> `exdeorum:barrel_compost`)
+- Sieve recipes (`exnihilosequentia:sieve`, `exnihilosequentia:sifting` -> `exdeorum:sieve`)
 
 Some features that still need to be implemented:
 - Option to maintain directory sorting of the input files so that outputted files will appear in the same directory structure

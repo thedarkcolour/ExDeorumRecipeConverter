@@ -150,7 +150,7 @@ def ens_convert_compost_recipe(recipe_json: dict) -> dict:
     return {
         'type': 'exdeorum:barrel_compost',
         'ingredient': recipe_json['input'],
-        'amount': recipe_json['amount']
+        'volume': recipe_json['amount']
     }
 
 
